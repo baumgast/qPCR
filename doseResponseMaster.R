@@ -8,5 +8,11 @@ ref = 4
 source('~/Dropbox/R/pcr/doseRespAnalysis/doseResponse.R')
 #create the corresponding plots
 
-mfrow = c(1,3)
-ylim = c(0,3)
+ylim = c(0,4)
+
+#choose which gene to plot
+selectGREB1 = 1
+selectTFF1  = 1
+
+#plotting script
+source('~/Dropbox/R/pcr/doseRespAnalysis/doseRespPlot.R')
