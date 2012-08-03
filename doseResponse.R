@@ -54,9 +54,39 @@ for (i in 1:length(targetsb)) {
   assign(Name3,dd3)
 }
 #-------------------------------------------------------------------------------
-#delta delta Ct calculation: (Ct_target - Ct_GAPDH) - (Ct_target_ref - Ct_GAPDH_ref)
+#mean and std Ct values
+Ct.GAPDH.1.mean = apply(Ct.GAPDH.1,2,mean,na.rm = T)
+Ct.GAPDH.2.mean = apply(Ct.GAPDH.2,2,mean,na.rm = T)
+Ct.GAPDH.3.mean = apply(Ct.GAPDH.3,2,mean,na.rm = T)
 
-#titration
+Ct.GAPDH.1.sd = apply(Ct.GAPDH.1,2,sd,na.rm = T)
+Ct.GAPDH.2.sd = apply(Ct.GAPDH.2,2,sd,na.rm = T)
+Ct.GAPDH.3.sd = apply(Ct.GAPDH.3,2,sd,na.rm = T)
+
+Ct.GREB1.1.mean = apply(Ct.GREB1.1,2,mean,na.rm = T)
+Ct.GREB1.2.mean = apply(Ct.GREB1.2,2,mean,na.rm = T)
+Ct.GREB1.3.mean = apply(Ct.GREB1.3,2,mean,na.rm = T)
+
+Ct.GREB1.1.sd = apply(Ct.GREB1.1,2,sd,na.rm = T)
+Ct.GREB1.2.sd = apply(Ct.GREB1.2,2,sd,na.rm = T)
+Ct.GREB1.3.sd = apply(Ct.GREB1.3,2,sd,na.rm = T)
+
+Ct.TFF1.4.1.mean = apply(Ct.TFF1.4.1,2,mean,na.rm = T)
+
+Ct.TFF1.4.1.sd = apply(Ct.TFF1.4.1,2,sd,na.rm = T)
+
+Ct.TFF1.5.1.mean = apply(Ct.TFF1.5.1,2,mean,na.rm = T)
+
+Ct.TFF1.5.1.sd = apply(Ct.TFF1.5.1,2,sd,na.rm = T)
+
+Ct.TFF1.2.mean = apply(Ct.TFF1.2,2,mean,na.rm = T)
+Ct.TFF1.3.mean = apply(Ct.TFF1.3,2,mean,na.rm = T)
+
+Ct.TFF1.2.sd = apply(Ct.TFF1.2,2,sd,na.rm = T)
+Ct.TFF1.2.sd = apply(Ct.TFF1.2,2,sd,na.rm = T)
+
+#delta delta Ct calculation: (Ct_target - Ct_GAPDH) - (Ct_target_ref - Ct_GAPDH_ref)
+#single curves
 ddCtGREB1.1  = Ct.GREB1.1 - Ct.GAPDH.1 -(Ct.GREB1.1[,ref] - Ct.GAPDH.1[,ref])
 ddCtGREB1.2  = Ct.GREB1.2 - Ct.GAPDH.2 -(Ct.GREB1.2[,ref] - Ct.GAPDH.2[,ref])
 ddCtGREB1.3  = Ct.GREB1.3 - Ct.GAPDH.3 -(Ct.GREB1.3[,ref] - Ct.GAPDH.3[,ref])
@@ -65,3 +95,15 @@ ddCtTFF1.4.1 = Ct.TFF1.4.1 - Ct.GAPDH.1 - (Ct.TFF1.4.1[,ref] - Ct.GAPDH.1[,ref])
 ddCtTFF1.5.1 = Ct.TFF1.5.1 - Ct.GAPDH.1 - (Ct.TFF1.5.1[,ref] - Ct.GAPDH.1[,ref])
 ddCtTFF1.2   = Ct.TFF1.2 - Ct.GAPDH.2 - (Ct.TFF1.2[,ref] - Ct.GAPDH.2[,ref])
 ddCtTFF1.3   = Ct.TFF1.3 - Ct.GAPDH.3 - (Ct.TFF1.3[,ref] - Ct.GAPDH.3[,ref])
+
+#mean curves for biologial replicates
+ddCtGREB1.1.mean = Ct.GREB1.1.mean - Ct.GAPDH.1.mean - (Ct.GREB1.1.mean[ref] - Ct.GAPDH.1.mean[ref])
+ddCtGREB1.2.mean = Ct.GREB1.2.mean - Ct.GAPDH.2.mean - (Ct.GREB1.2.mean[ref] - Ct.GAPDH.2.mean[ref])
+ddCtGREB1.3.mean = Ct.GREB1.3.mean - Ct.GAPDH.3.mean - (Ct.GREB1.3.mean[ref] - Ct.GAPDH.3.mean[ref])
+
+ddCtTFF1.4.1.mean = Ct.TFF1.4.1.mean - Ct.GAPDH.1.mean - (Ct.TFF1.4.1.mean[ref] - Ct.GAPDH.1.mean[ref])
+
+ddCtTFF1.5.1.mean = Ct.TFF1.5.1.mean - Ct.GAPDH.1.mean - (Ct.TFF1.5.1.mean[ref] - Ct.GAPDH.1.mean[ref])
+
+ddCtTFF1.2.mean = Ct.TFF1.2.mean - Ct.GAPDH.2.mean - (Ct.TFF1.2.mean[ref] - Ct.GAPDH.2.mean[ref])
+ddCtTFF1.3.mean = Ct.TFF1.3.mean - Ct.GAPDH.3.mean - (Ct.TFF1.3.mean[ref] - Ct.GAPDH.3.mean[ref])
