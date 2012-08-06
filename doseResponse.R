@@ -3,7 +3,7 @@
 setwd('~/Dropbox/qPCR results/dose response/dense sampling/')
 a = read.csv('1st series/2012-07-24-dense-dose-response-new-TFF1-primer-Results.csv', header = T, na.strings = 'Undetermined')
 b = read.csv('2nd series/2012-07-27-doseResp_dense-2ndSeries-Results.csv', header = T, na.strings = 'Undetermined')
-c = read.csv('3rd series/2012-07-27-doseResp_dense-3rdSeries-Results.csv', header = T, na.strings = 'Undetermined')
+c = read.csv('3rd series/2012-08-02-doseResp-3rdSeries-3-Results.csv', header = T, na.strings = 'Undetermined')
 
 #define the titrations to sort out the data of the above files
 titers    = c('DMEM','ICI','stripped','1e-8','1e-9','5e-10','2.5e-10','1.3e-10','6.3e-11','3.1e-11','1.6e-11','7.8e-12',
@@ -84,7 +84,7 @@ Ct.TFF1.3.mean = apply(Ct.TFF1.3,2,mean,na.rm = T)
 
 Ct.TFF1.2.sd = apply(Ct.TFF1.2,2,sd,na.rm = T)
 Ct.TFF1.2.sd = apply(Ct.TFF1.2,2,sd,na.rm = T)
-
+#-------------------------------------------------------------------------------
 #delta delta Ct calculation: (Ct_target - Ct_GAPDH) - (Ct_target_ref - Ct_GAPDH_ref)
 #single curves
 ddCtGREB1.1  = Ct.GREB1.1 - Ct.GAPDH.1 -(Ct.GREB1.1[,ref] - Ct.GAPDH.1[,ref])
