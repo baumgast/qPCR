@@ -3,13 +3,13 @@
 #-------------------------------------------------------------------------------
 
 #reference point in the titration series
-ref = 18
+ref = 3
 #call the calculation script
 source('~/Dropbox/R/pcr/doseRespAnalysis/doseResponse.R')
 #create the corresponding plots
 
-ylim = c(0,4)
-ylimMean = c(0,4)
+ylim = c(0,150)
+ylimMean = c(0,150)
 
 #choose which gene to plot
 selectGREB1 = 1
