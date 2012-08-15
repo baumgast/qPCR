@@ -133,7 +133,6 @@ legend('topleft',c('1st Replicate TFF1-4','1st replicate TFF1-5','2nd Replicate'
 #-------------------------------------------------------------------------------
 #plotting biological replicats against each other
 par(mfrow = c(2,3))
-lim = c(-30,100)
 
 plot(2^-ddCtGREB1.1.mean[4:18],2^-ddCtGREB1.2.mean[4:18], pch = 20, xlim = lim, ylim = lim,
      xlab = 'fold induction GREB1-1',
@@ -146,7 +145,7 @@ segments(2^-ddCtGREB1.1.mean[4:18] - errGREB1.1[4:18],2^-ddCtGREB1.2.mean[4:18],
 segments(2^-ddCtGREB1.1.mean[4:18],2^-ddCtGREB1.2.mean[4:18] - errGREB1.2[4:18],2^-ddCtGREB1.1.mean[4:18],2^-ddCtGREB1.2.mean[4:18] + errGREB1.2[4:18])
 abline(0,1, lty = 2)
 abline(fmGREB1.1.2, col = 'grey', lwd = 2)
-legend('bottomright',c(paste('slope =',round(fmGREB1.1.2$coefficients,4))), bty = 'n')
+legend('bottomleft',c(paste('slope =',round(fmGREB1.1.2$coefficients,4)), paste('ref =',titers[ref])), bty = 'n')
 
 plot(2^-ddCtGREB1.1.mean[4:18],2^-ddCtGREB1.3.mean[4:18], pch = 20, xlim = lim, ylim = lim,
      xlab = 'fold induction GREB1-1',
@@ -159,7 +158,7 @@ segments(2^-ddCtGREB1.1.mean[4:18] - errGREB1.1[4:18],2^-ddCtGREB1.3.mean[4:18],
 segments(2^-ddCtGREB1.1.mean[4:18],2^-ddCtGREB1.3.mean[4:18] - errGREB1.3[4:18],2^-ddCtGREB1.1.mean[4:18],2^-ddCtGREB1.3.mean[4:18] + errGREB1.3[4:18])
 abline(0,1, lty = 2)
 abline(fmGREB1.1.3, col = 'grey', lwd = 2)
-legend('bottomright',c(paste('slope =',round(fmGREB1.1.3$coefficients,4))), bty = 'n')
+legend('bottomleft',c(paste('slope =',round(fmGREB1.1.3$coefficients,4)), paste('ref =',titers[ref])), bty = 'n')
 
 plot(2^-ddCtGREB1.2.mean[4:18],2^-ddCtGREB1.3.mean[4:18], pch = 20, xlim = lim, ylim = lim,
      xlab = 'fold induction GREB1-2',
@@ -172,7 +171,7 @@ segments(2^-ddCtGREB1.2.mean[4:18] - errGREB1.2[4:18],2^-ddCtGREB1.3.mean[4:18],
 segments(2^-ddCtGREB1.2.mean[4:18],2^-ddCtGREB1.3.mean[4:18] - errGREB1.3[4:18],2^-ddCtGREB1.2.mean[4:18],2^-ddCtGREB1.3.mean[4:18] + errGREB1.3[4:18])
 abline(0,1, lty = 2)
 abline(fmGREB1.2.3, col = 'grey', lwd = 2)
-legend('bottomright',c(paste('slope =',round(fmGREB1.2.3$coefficients,4))), bty = 'n')
+legend('bottomleft',c(paste('slope =',round(fmGREB1.2.3$coefficients,4)), paste('ref =',titers[ref])), bty = 'n')
 #------------------------------------------------------------------------------
 plot(2^-ddCtTFF1.5.1.mean[4:18],2^-ddCtTFF1.2.mean[4:18], pch = 20, xlim = lim, ylim = lim,
      xlab = 'fold induction TFF1-1',
@@ -185,7 +184,7 @@ segments(2^-ddCtTFF1.5.1.mean[4:18] - errTFF1.5.1[4:18],2^-ddCtTFF1.2.mean[4:18]
 segments(2^-ddCtTFF1.5.1.mean[4:18],2^-ddCtTFF1.2.mean[4:18] - errTFF1.2[4:18],2^-ddCtTFF1.5.1.mean[4:18],2^-ddCtTFF1.2.mean[4:18] + errTFF1.2[4:18])
 abline(0,1, lty = 2)
 abline(fmTFF1.1.2, lwd = 2, col = 'grey')
-legend('bottomright',c(paste('slope =',round(fmTFF1.1.2$coefficients,4))), bty = 'n')
+legend('bottomleft',c(paste('slope =',round(fmTFF1.1.2$coefficients,4)), paste('ref =',titers[ref])), bty = 'n')
 
 plot(2^-ddCtTFF1.5.1.mean[4:18],2^-ddCtTFF1.3.mean[4:18], pch = 20, xlim = lim, ylim = lim,
      xlab = 'fold induction TFF1-1',
@@ -198,7 +197,7 @@ segments(2^-ddCtTFF1.5.1.mean[4:18] - errTFF1.5.1[4:18],2^-ddCtTFF1.3.mean[4:18]
 segments(2^-ddCtTFF1.5.1.mean[4:18],2^-ddCtTFF1.3.mean[4:18] - errTFF1.3[4:18],2^-ddCtTFF1.5.1.mean[4:18],2^-ddCtTFF1.3.mean[4:18] + errTFF1.3[4:18])
 abline(0,1, lty = 2)
 abline(fmTFF1.1.3, lwd = 2, col = 'grey')
-legend('bottomright',c(paste('slope =',round(fmTFF1.1.3$coefficients,4))), bty = 'n')
+legend('bottomleft',c(paste('slope =',round(fmTFF1.1.3$coefficients,4)), paste('ref =',titers[ref])), bty = 'n')
 
 plot(2^-ddCtTFF1.2.mean[4:18],2^-ddCtTFF1.3.mean[4:18], pch = 20, xlim = lim, ylim = lim,
      xlab = 'fold induction TFF1-2',
@@ -211,4 +210,4 @@ segments(2^-ddCtTFF1.2.mean[4:18] - errTFF1.2[4:18],2^-ddCtTFF1.3.mean[4:18],2^-
 segments(2^-ddCtTFF1.2.mean[4:18],2^-ddCtTFF1.3.mean[4:18] - errTFF1.3[4:18],2^-ddCtTFF1.2.mean[4:18],2^-ddCtTFF1.3.mean[4:18] + errTFF1.3[4:18])
 abline(0,1, lty = 2)
 abline(fmTFF1.2.3, lwd = 2, col = 'grey')
-legend('bottomright',c(paste('slope =',round(fmTFF1.2.3$coefficients,4))), bty = 'n')
+legend('bottomleft',c(paste('slope =',round(fmTFF1.2.3$coefficients,4)), paste('ref =',titers[ref])), bty = 'n')

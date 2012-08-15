@@ -54,10 +54,17 @@ for (i in 1:length(targetsb)) {
   assign(Name3,dd3)
 }
 #-------------------------------------------------------------------------------
+
+#sort out outliers manually
+#GREB1.1
+Ct.GAPDH.1[3,15] = NA
+#TFF1
+Ct.TFF1.4.1[2,15] = NA
 #mean and std Ct values
 Ct.GAPDH.1.mean = apply(Ct.GAPDH.1,2,mean,na.rm = T)
 Ct.GAPDH.2.mean = apply(Ct.GAPDH.2,2,mean,na.rm = T)
 Ct.GAPDH.3.mean = apply(Ct.GAPDH.3,2,mean,na.rm = T)
+Ct.GAPDH.3.mean[9] = NA
 
 Ct.GAPDH.1.sd = apply(Ct.GAPDH.1,2,sd,na.rm = T)
 Ct.GAPDH.2.sd = apply(Ct.GAPDH.2,2,sd,na.rm = T)
@@ -110,12 +117,12 @@ ddCtTFF1.3.mean = Ct.TFF1.3.mean - Ct.GAPDH.3.mean - (Ct.TFF1.3.mean[ref] - Ct.G
 
 #-------------------------------------------------------------------------------
 #calculating statistical errors based on gaussian error propagation
-errGREB1.1 = 2^-ddCtGREB1.1.mean*log(2)*(Ct.GREB1.1.sd^2 + Ct.GAPDH.1.sd^2 + Ct.GREB1.1.sd[ref]^2 + Ct.GAPDH.1.sd[ref]^2)
-errGREB1.2 = 2^-ddCtGREB1.2.mean*log(2)*(Ct.GREB1.2.sd^2 + Ct.GAPDH.2.sd^2 + Ct.GREB1.2.sd[ref]^2 + Ct.GAPDH.2.sd[ref]^2)
-errGREB1.3 = 2^-ddCtGREB1.3.mean*log(2)*(Ct.GREB1.3.sd^2 + Ct.GAPDH.3.sd^2 + Ct.GREB1.3.sd[ref]^2 + Ct.GAPDH.3.sd[ref]^2)
+errGREB1.1 = sqrt(2^-ddCtGREB1.1.mean*log(2)*(Ct.GREB1.1.sd^2 + Ct.GAPDH.1.sd^2 + Ct.GREB1.1.sd[ref]^2 + Ct.GAPDH.1.sd[ref]^2))
+errGREB1.2 = sqrt(2^-ddCtGREB1.2.mean*log(2)*(Ct.GREB1.2.sd^2 + Ct.GAPDH.2.sd^2 + Ct.GREB1.2.sd[ref]^2 + Ct.GAPDH.2.sd[ref]^2))
+errGREB1.3 = sqrt(2^-ddCtGREB1.3.mean*log(2)*(Ct.GREB1.3.sd^2 + Ct.GAPDH.3.sd^2 + Ct.GREB1.3.sd[ref]^2 + Ct.GAPDH.3.sd[ref]^2))
 
-errTFF1.4.1 = 2^-ddCtTFF1.4.1.mean*log(2)*(Ct.TFF1.4.1.sd^2 + Ct.GAPDH.1.sd^2 + Ct.TFF1.4.1.sd[ref] + Ct.GAPDH.1.sd[ref]^2)
-errTFF1.5.1 = 2^-ddCtTFF1.5.1.mean*log(2)*(Ct.TFF1.5.1.sd^2 + Ct.GAPDH.1.sd^2 + Ct.TFF1.5.1.sd[ref] + Ct.GAPDH.1.sd[ref]^2)
+errTFF1.4.1 = sqrt(2^-ddCtTFF1.4.1.mean*log(2)*(Ct.TFF1.4.1.sd^2 + Ct.GAPDH.1.sd^2 + Ct.TFF1.4.1.sd[ref] + Ct.GAPDH.1.sd[ref]^2))
+errTFF1.5.1 = sqrt(2^-ddCtTFF1.5.1.mean*log(2)*(Ct.TFF1.5.1.sd^2 + Ct.GAPDH.1.sd^2 + Ct.TFF1.5.1.sd[ref] + Ct.GAPDH.1.sd[ref]^2))
 
-errTFF1.2 = 2^-ddCtTFF1.2.mean*log(2)*(Ct.TFF1.2.sd^2 + Ct.GAPDH.2.sd^2 + Ct.TFF1.2.sd[ref]^2 + Ct.GAPDH.2.sd[ref]^2)
-errTFF1.3 = 2^-ddCtTFF1.3.mean*log(2)*(Ct.TFF1.3.sd^2 + Ct.GAPDH.3.sd^2 + Ct.TFF1.3.sd[ref]^2 + Ct.GAPDH.3.sd[ref]^2)
+errTFF1.2 = sqrt(2^-ddCtTFF1.2.mean*log(2)*(Ct.TFF1.2.sd^2 + Ct.GAPDH.2.sd^2 + Ct.TFF1.2.sd[ref]^2 + Ct.GAPDH.2.sd[ref]^2))
+errTFF1.3 = sqrt(2^-ddCtTFF1.3.mean*log(2)*(Ct.TFF1.3.sd^2 + Ct.GAPDH.3.sd^2 + Ct.TFF1.3.sd[ref]^2 + Ct.GAPDH.3.sd[ref]^2))
