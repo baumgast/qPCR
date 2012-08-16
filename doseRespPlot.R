@@ -145,7 +145,7 @@ segments(2^-ddCtGREB1.1.mean[4:18] - errGREB1.1[4:18],2^-ddCtGREB1.2.mean[4:18],
 segments(2^-ddCtGREB1.1.mean[4:18],2^-ddCtGREB1.2.mean[4:18] - errGREB1.2[4:18],2^-ddCtGREB1.1.mean[4:18],2^-ddCtGREB1.2.mean[4:18] + errGREB1.2[4:18])
 abline(0,1, lty = 2)
 abline(fmGREB1.1.2, col = 'grey', lwd = 2)
-legend('bottomleft',c(paste('slope =',round(fmGREB1.1.2$coefficients,4)), paste('ref =',titers[ref])), bty = 'n')
+legend('bottomright',c(paste('slope =',round(fmGREB1.1.2$coefficients,4)), paste('ref =',titers[ref])), bty = 'n')
 
 plot(2^-ddCtGREB1.1.mean[4:18],2^-ddCtGREB1.3.mean[4:18], pch = 20, xlim = lim, ylim = lim,
      xlab = 'fold induction GREB1-1',
@@ -158,7 +158,7 @@ segments(2^-ddCtGREB1.1.mean[4:18] - errGREB1.1[4:18],2^-ddCtGREB1.3.mean[4:18],
 segments(2^-ddCtGREB1.1.mean[4:18],2^-ddCtGREB1.3.mean[4:18] - errGREB1.3[4:18],2^-ddCtGREB1.1.mean[4:18],2^-ddCtGREB1.3.mean[4:18] + errGREB1.3[4:18])
 abline(0,1, lty = 2)
 abline(fmGREB1.1.3, col = 'grey', lwd = 2)
-legend('bottomleft',c(paste('slope =',round(fmGREB1.1.3$coefficients,4)), paste('ref =',titers[ref])), bty = 'n')
+legend('bottomright',c(paste('slope =',round(fmGREB1.1.3$coefficients,4)), paste('ref =',titers[ref])), bty = 'n')
 
 plot(2^-ddCtGREB1.2.mean[4:18],2^-ddCtGREB1.3.mean[4:18], pch = 20, xlim = lim, ylim = lim,
      xlab = 'fold induction GREB1-2',
@@ -171,7 +171,7 @@ segments(2^-ddCtGREB1.2.mean[4:18] - errGREB1.2[4:18],2^-ddCtGREB1.3.mean[4:18],
 segments(2^-ddCtGREB1.2.mean[4:18],2^-ddCtGREB1.3.mean[4:18] - errGREB1.3[4:18],2^-ddCtGREB1.2.mean[4:18],2^-ddCtGREB1.3.mean[4:18] + errGREB1.3[4:18])
 abline(0,1, lty = 2)
 abline(fmGREB1.2.3, col = 'grey', lwd = 2)
-legend('bottomleft',c(paste('slope =',round(fmGREB1.2.3$coefficients,4)), paste('ref =',titers[ref])), bty = 'n')
+legend('bottomright',c(paste('slope =',round(fmGREB1.2.3$coefficients,4)), paste('ref =',titers[ref])), bty = 'n')
 #------------------------------------------------------------------------------
 plot(2^-ddCtTFF1.5.1.mean[4:18],2^-ddCtTFF1.2.mean[4:18], pch = 20, xlim = lim, ylim = lim,
      xlab = 'fold induction TFF1-1',
@@ -184,7 +184,7 @@ segments(2^-ddCtTFF1.5.1.mean[4:18] - errTFF1.5.1[4:18],2^-ddCtTFF1.2.mean[4:18]
 segments(2^-ddCtTFF1.5.1.mean[4:18],2^-ddCtTFF1.2.mean[4:18] - errTFF1.2[4:18],2^-ddCtTFF1.5.1.mean[4:18],2^-ddCtTFF1.2.mean[4:18] + errTFF1.2[4:18])
 abline(0,1, lty = 2)
 abline(fmTFF1.1.2, lwd = 2, col = 'grey')
-legend('bottomleft',c(paste('slope =',round(fmTFF1.1.2$coefficients,4)), paste('ref =',titers[ref])), bty = 'n')
+legend('bottomright',c(paste('slope =',round(fmTFF1.1.2$coefficients,4)), paste('ref =',titers[ref])), bty = 'n')
 
 plot(2^-ddCtTFF1.5.1.mean[4:18],2^-ddCtTFF1.3.mean[4:18], pch = 20, xlim = lim, ylim = lim,
      xlab = 'fold induction TFF1-1',
@@ -197,7 +197,7 @@ segments(2^-ddCtTFF1.5.1.mean[4:18] - errTFF1.5.1[4:18],2^-ddCtTFF1.3.mean[4:18]
 segments(2^-ddCtTFF1.5.1.mean[4:18],2^-ddCtTFF1.3.mean[4:18] - errTFF1.3[4:18],2^-ddCtTFF1.5.1.mean[4:18],2^-ddCtTFF1.3.mean[4:18] + errTFF1.3[4:18])
 abline(0,1, lty = 2)
 abline(fmTFF1.1.3, lwd = 2, col = 'grey')
-legend('bottomleft',c(paste('slope =',round(fmTFF1.1.3$coefficients,4)), paste('ref =',titers[ref])), bty = 'n')
+legend('bottomright',c(paste('slope =',round(fmTFF1.1.3$coefficients,4)), paste('ref =',titers[ref])), bty = 'n')
 
 plot(2^-ddCtTFF1.2.mean[4:18],2^-ddCtTFF1.3.mean[4:18], pch = 20, xlim = lim, ylim = lim,
      xlab = 'fold induction TFF1-2',
@@ -210,4 +210,111 @@ segments(2^-ddCtTFF1.2.mean[4:18] - errTFF1.2[4:18],2^-ddCtTFF1.3.mean[4:18],2^-
 segments(2^-ddCtTFF1.2.mean[4:18],2^-ddCtTFF1.3.mean[4:18] - errTFF1.3[4:18],2^-ddCtTFF1.2.mean[4:18],2^-ddCtTFF1.3.mean[4:18] + errTFF1.3[4:18])
 abline(0,1, lty = 2)
 abline(fmTFF1.2.3, lwd = 2, col = 'grey')
-legend('bottomleft',c(paste('slope =',round(fmTFF1.2.3$coefficients,4)), paste('ref =',titers[ref])), bty = 'n')
+legend('bottomright',c(paste('slope =',round(fmTFF1.2.3$coefficients,4)), paste('ref =',titers[ref])), bty = 'n')
+
+#-------------------------------------------------------------------------------
+#rescaling to adjust the lines to each other and rescaling to a range from 0 to 100
+#GREB1.1 as standard for GREB1
+GREB1.1    = 2^-ddCtGREB1.1.mean[4:18]
+GREB1.2    = 2^-ddCtGREB1.2.mean[4:18]/fmGREB1.1.2$coefficients
+ErrGREB1.2 = errGREB1.2[4:18]/fmGREB1.1.2$coefficients
+GREB1.3    = 2^-ddCtGREB1.3.mean[4:18]/fmGREB1.1.3$coefficients
+ErrGREB1.3 = errGREB1.3[4:18]/fmGREB1.1.3$coefficients
+
+TFF1.1    = 2^-ddCtTFF1.5.1.mean[4:18]
+TFF1.2    = 2^-ddCtTFF1.2.mean[4:18]/fmTFF1.1.2$coefficients
+ErrTFF1.2 = errTFF1.2[4:18]/fmTFF1.1.2$coefficients
+TFF1.3    = 2^-ddCtTFF1.3.mean[4:18]/fmTFF1.1.3$coefficients
+ErrTFF1.3 = errTFF1.3[4:18]/fmTFF1.1.3$coefficients
+
+ylim = c(0,50)
+par(mfrow = c(1,2))
+
+plot(titer,GREB1.1, type = 'p', log = 'x', ylim = ylim, pch = 19,
+     main = 'GREB1',
+     xlab = 'E2 concentration (mol)',
+     ylab = 'Fold induction')
+grid()
+segments(titer,GREB1.1-errGREB1.1[4:18],titer,GREB1.1+errGREB1.1[4:18])
+points(titer,GREB1.2, type = 'p', col = 'red', pch = 17)
+segments(titer,GREB1.2 - ErrGREB1.2,titer,GREB1.2+ErrGREB1.2, col = 'red')
+points(titer,GREB1.3, type = 'p', col = 'blue', pch = 15)
+segments(titer,GREB1.3-ErrGREB1.3,titer,GREB1.3+ErrGREB1.3, col = 'blue')
+
+plot(titer,TFF1.1, type = 'p', log = 'x', ylim = ylim, pch = 19,
+     main = 'TFF1',
+     xlab = 'E2 concentration (mol)',
+     ylab = 'Fold induction')
+grid()
+segments(titer,TFF1.1-errTFF1.5.1[4:18],titer,TFF1.1+errTFF1.5.1[4:18])
+points(titer,TFF1.2, type = 'p', pch = 17, col = 'red')
+segments(titer,TFF1.2-ErrTFF1.2,titer,TFF1.2+ErrTFF1.2, col = 'red')
+points(titer,TFF1.3, type = 'p', pch = 15, col = 'blue')
+segments(titer,TFF1.3-ErrTFF1.3,titer,TFF1.3+ErrTFF1.3, col = 'blue')
+
+#-------------------------------------------------------------------------------
+#plot the control experiments as barplot
+ControlGREB1 = matrix(NA,nr = 3,nc = 2)
+ErrContGREB1 = matrix(NA,nr = 3, nc = 2)
+colnames(ControlGREB1) = c('DMEM','ICI')
+colnames(ErrContGREB1) = c('DMEM','ICI')
+
+ControlGREB1[1,1] = 2^-ddCtGREB1.1.mean[1]
+ControlGREB1[2,1] = 2^-ddCtGREB1.2.mean[1]
+ControlGREB1[3,1] = 2^-ddCtGREB1.3.mean[1]
+
+ControlGREB1[1,2] = 2^-ddCtGREB1.1.mean[2]
+ControlGREB1[2,2] = 2^-ddCtGREB1.2.mean[2]
+ControlGREB1[3,2] = 2^-ddCtGREB1.3.mean[2]
+
+ErrContGREB1[1,1] = errGREB1.1[1]
+ErrContGREB1[2.1] = errGREB1.2[1]
+ErrContGREB1[3,1] = errGREB1.3[1]
+
+ErrContGREB1[1,2] = errGREB1.1[2]
+ErrContGREB1[2,2] = errGREB1.2[2]
+ErrContGREB1[3,2] = errGREB1.3[2]
+
+par(mfrow = c(1,1))
+ylim = c(0,90)
+bar = barplot(ControlGREB1, beside = T, names.arg = c('DMEM', 'ICI'),
+              ylim = ylim,
+              main = 'Controls GREB1',
+              ylab = 'Fold induction',
+              border  = 'white',
+              col = 'gray')
+
+segments(bar,ControlGREB1 - ErrContGREB1, bar, ControlGREB1 + ErrContGREB1, lwd = 2)
+
+#------------------------------------------------------------------------------
+ControlTFF1 = matrix(NA,nr = 3, nc = 2)
+ErrContTFF1 = matrix(NA,nr = 3, nc = 2)
+colnames(ControlTFF1) = c('DMEM','ICI')
+colnames(ErrContTFF1) = c('DMEM','ICI')
+
+ControlTFF1[1,1] = 2^-ddCtTFF1.5.1.mean[1]
+ControlTFF1[2,1] = 2^-ddCtTFF1.2.mean[1]
+ControlTFF1[3,1] = 2^-ddCtTFF1.3.mean[1]
+
+ControlTFF1[1,2] = 2^-ddCtTFF1.5.1.mean[2]
+ControlTFF1[2,2] = 2^-ddCtTFF1.2.mean[2]
+ControlTFF1[3,2] = 2^-ddCtTFF1.3.mean[2]
+
+ErrContTFF1[1,1] = errTFF1.5.1[1]
+ErrContTFF1[2,1] = errTFF1.2[1]
+ErrContTFF1[3,1] = errTFF1.3[1]
+
+ErrContTFF1[1,2] = errTFF1.5.1[2]
+ErrContTFF1[2,2] = errTFF1.2[2]
+ErrContTFF1[3,2] = errTFF1.3[2]
+
+par(mfrow = c(1,1))
+
+bar = barplot(ControlTFF1, beside = T, names.arg = c('DMEM','ICI'),
+              ylim = ylim,
+              main = 'Controls TFF1',
+              ylab = 'Fold induction',
+              border = 'white',
+              col = 'gray')
+
+segments(bar,ControlTFF1 - ErrContTFF1,bar,ControlTFF1+ErrContTFF1, lwd = 2)

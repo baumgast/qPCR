@@ -10,7 +10,7 @@ source('~/Dropbox/R/pcr/doseRespAnalysis/doseResponse.R')
 
 ylim = c(0,150)
 ylimMean = c(0,150)
-lim = c(-30,100)
+lim = c(-5,55)
 
 #choose which gene to plot
 selectGREB1 = 1
