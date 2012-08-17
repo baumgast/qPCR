@@ -227,6 +227,45 @@ ErrTFF1.2 = errTFF1.2[4:18]/fmTFF1.1.2$coefficients
 TFF1.3    = 2^-ddCtTFF1.3.mean[4:18]/fmTFF1.1.3$coefficients
 ErrTFF1.3 = errTFF1.3[4:18]/fmTFF1.1.3$coefficients
 
+#------------------------------------------------------------------------------
+#nonlinear fitting of a hill function to the dose response curves
+#define the fitting function
+hillFit = function(titrations,data,start, weights) {
+  nlf = nls(data ~ ymax*titrations^n/(ec50^n + titrations^n), start = start, trace = T, weights = weights)
+}
+start = list(ymax = 20, ec50 = 4e-11, n = 3)
+
+coeffs = matrix(NA,nr = 3, nc = 6)
+colnames(coeffs) = c('GREB1.1','GREB1.2','GREB1.3','TFF1.1','TFF1.2','TFF3')
+rownames(coeffs) = c('ymax','ec50','n')
+
+weights = 1/errGREB1.1[4:18]
+coeffs[,1] = summary(hillFit(titer,GREB1.1,start,weights))$coefficients[,1]
+weights = 1/errGREB1.2[4:18]
+coeffs[,2] = summary(hillFit(titer,GREB1.2,start,weights))$coefficients[,1]
+weights = 1/errGREB1.3[4:18]
+coeffs[,3] = summary(hillFit(titer,GREB1.3,start,weights))$coefficients[,1]
+
+weights = 1/errTFF1.5.1[4:18]
+coeffs[,4] = summary(hillFit(titer,TFF1.1,start,weights))$coefficients[,1]
+weights = 1/errTFF1.2[4:18]
+coeffs[,5] = summary(hillFit(titer,TFF1.2,start,weights))$coefficients[,1]
+weights = 1/errTFF1.3[4:18]
+coeffs[,6] = summary(hillFit(titer,TFF1.3,start,weights))$coefficients[,1]
+
+#calculate data for the fitted lines
+data = seq(1e-13,1e-8,1e-13)
+fit = matrix(NA,nr = length(data), nc = 6)
+colnames(fit) = c('GREB1.1','GREB1.2','GREB1.3','TFF1.1','TFF1.2','TFF3')
+fit[,1] = coeffs[1,1]*data^coeffs[3,1]/(coeffs[2,1]^coeffs[3,1] + data^coeffs[3,1])
+fit[,2] = coeffs[1,2]*data^coeffs[3,2]/(coeffs[2,2]^coeffs[3,2] + data^coeffs[3,2])
+fit[,3] = coeffs[1,3]*data^coeffs[3,3]/(coeffs[2,3]^coeffs[3,3] + data^coeffs[3,3])
+
+fit[,4] = coeffs[1,4]*data^coeffs[3,4]/(coeffs[2,4]^coeffs[3,4] + data^coeffs[3,4])
+fit[,5] = coeffs[1,5]*data^coeffs[3,5]/(coeffs[2,5]^coeffs[3,5] + data^coeffs[3,5])
+fit[,6] = coeffs[1,6]*data^coeffs[3,6]/(coeffs[2,6]^coeffs[3,6] + data^coeffs[3,6])
+
+#-------------------------------------------------------------------------------
 ylim = c(0,50)
 par(mfrow = c(1,2))
 
@@ -235,10 +274,13 @@ plot(titer,GREB1.1, type = 'p', log = 'x', ylim = ylim, pch = 19,
      xlab = 'E2 concentration (mol)',
      ylab = 'Fold induction')
 grid()
+points(data,fit[,1], type = 'l')
 segments(titer,GREB1.1-errGREB1.1[4:18],titer,GREB1.1+errGREB1.1[4:18])
 points(titer,GREB1.2, type = 'p', col = 'red', pch = 17)
+points(data,fit[,2], type = 'l', col = 'red')
 segments(titer,GREB1.2 - ErrGREB1.2,titer,GREB1.2+ErrGREB1.2, col = 'red')
 points(titer,GREB1.3, type = 'p', col = 'blue', pch = 15)
+points(data,fit[,3], type = 'l', col = 'blue')
 segments(titer,GREB1.3-ErrGREB1.3,titer,GREB1.3+ErrGREB1.3, col = 'blue')
 
 plot(titer,TFF1.1, type = 'p', log = 'x', ylim = ylim, pch = 19,
@@ -246,10 +288,13 @@ plot(titer,TFF1.1, type = 'p', log = 'x', ylim = ylim, pch = 19,
      xlab = 'E2 concentration (mol)',
      ylab = 'Fold induction')
 grid()
+points(data, fit[,4], type = 'l')
 segments(titer,TFF1.1-errTFF1.5.1[4:18],titer,TFF1.1+errTFF1.5.1[4:18])
 points(titer,TFF1.2, type = 'p', pch = 17, col = 'red')
+points(data,fit[,5], type = 'l', col = 'red')
 segments(titer,TFF1.2-ErrTFF1.2,titer,TFF1.2+ErrTFF1.2, col = 'red')
 points(titer,TFF1.3, type = 'p', pch = 15, col = 'blue')
+points(data,fit[,6], type = 'l', col = 'blue')
 segments(titer,TFF1.3-ErrTFF1.3,titer,TFF1.3+ErrTFF1.3, col = 'blue')
 
 #-------------------------------------------------------------------------------
@@ -319,29 +364,4 @@ bar = barplot(ControlTFF1, beside = T, names.arg = c('DMEM','ICI'),
 
 segments(bar,ControlTFF1 - ErrContTFF1,bar,ControlTFF1+ErrContTFF1, lwd = 2)
 
-#------------------------------------------------------------------------------
-#nonlinear fitting of a hill function to the dose response curves
-#define the fitting function
-hillFit = function(titrations,data,start, weights) {
-  nlf = nls(data ~ ymax*titrations^n/(ec50^n + titrations^n), start = start, trace = T, weights = weights)
-}
-start = list(ymax = 20, ec50 = 4e-11, n = 3)
-
-coeffs = matrix(NA,nr = 3, nc = 6)
-colnames(coeffs) = c('GREB1.1','GREB1.2','GREB1.3','TFF1.1','TFF1.2','TFF3')
-rownames(coeffs) = c('ymax','ec50','n')
-
-weights = 1/errGREB1.1[4:18]
-coeffs[,1] = summary(hillFit(titer,GREB1.1,start,weights))$coefficients[,1]
-weights = 1/errGREB1.2[4:18]
-coeffs[,2] = summary(hillFit(titer,GREB1.2,start,weights))$coefficients[,1]
-weights = 1/errGREB1.3[4:18]
-coeffs[,3] = summary(hillFit(titer,GREB1.3,start,weights))$coefficients[,1]
-
-weights = 1/errTFF1.5.1[4:18]
-coeffs[,4] = summary(hillFit(titer,TFF1.1,start,weights))$coefficients[,1]
-weights = 1/errTFF1.2[4:18]
-coeffs[,5] = summary(hillFit(titer,TFF1.2,start,weights))$coefficients[,1]
-weights = 1/errTFF1.3[4:18]
-coeffs[,6] = summary(hillFit(titer,TFF1.3,start,weights))$coefficients[,1]
 
