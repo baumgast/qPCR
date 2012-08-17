@@ -318,3 +318,30 @@ bar = barplot(ControlTFF1, beside = T, names.arg = c('DMEM','ICI'),
               col = 'gray')
 
 segments(bar,ControlTFF1 - ErrContTFF1,bar,ControlTFF1+ErrContTFF1, lwd = 2)
+
+#------------------------------------------------------------------------------
+#nonlinear fitting of a hill function to the dose response curves
+#define the fitting function
+hillFit = function(titrations,data,start, weights) {
+  nlf = nls(data ~ ymax*titrations^n/(ec50^n + titrations^n), start = start, trace = T, weights = weights)
+}
+start = list(ymax = 20, ec50 = 4e-11, n = 3)
+
+coeffs = matrix(NA,nr = 3, nc = 6)
+colnames(coeffs) = c('GREB1.1','GREB1.2','GREB1.3','TFF1.1','TFF1.2','TFF3')
+rownames(coeffs) = c('ymax','ec50','n')
+
+weights = 1/errGREB1.1[4:18]
+coeffs[,1] = summary(hillFit(titer,GREB1.1,start,weights))$coefficients[,1]
+weights = 1/errGREB1.2[4:18]
+coeffs[,2] = summary(hillFit(titer,GREB1.2,start,weights))$coefficients[,1]
+weights = 1/errGREB1.3[4:18]
+coeffs[,3] = summary(hillFit(titer,GREB1.3,start,weights))$coefficients[,1]
+
+weights = 1/errTFF1.5.1[4:18]
+coeffs[,4] = summary(hillFit(titer,TFF1.1,start,weights))$coefficients[,1]
+weights = 1/errTFF1.2[4:18]
+coeffs[,5] = summary(hillFit(titer,TFF1.2,start,weights))$coefficients[,1]
+weights = 1/errTFF1.3[4:18]
+coeffs[,6] = summary(hillFit(titer,TFF1.3,start,weights))$coefficients[,1]
+
