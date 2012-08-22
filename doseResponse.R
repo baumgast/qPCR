@@ -107,6 +107,7 @@ ddCtTFF1.3   = Ct.TFF1.3 - Ct.GAPDH.3 - (Ct.TFF1.3[,ref] - Ct.GAPDH.3[,ref])
 ddCtGREB1.1.mean = Ct.GREB1.1.mean - Ct.GAPDH.1.mean - (Ct.GREB1.1.mean[ref] - Ct.GAPDH.1.mean[ref])
 ddCtGREB1.2.mean = Ct.GREB1.2.mean - Ct.GAPDH.2.mean - (Ct.GREB1.2.mean[ref] - Ct.GAPDH.2.mean[ref])
 ddCtGREB1.3.mean = Ct.GREB1.3.mean - Ct.GAPDH.3.mean - (Ct.GREB1.3.mean[ref] - Ct.GAPDH.3.mean[ref])
+ddCtGREB1.3.mean[4] = NA
 
 ddCtTFF1.4.1.mean = Ct.TFF1.4.1.mean - Ct.GAPDH.1.mean - (Ct.TFF1.4.1.mean[ref] - Ct.GAPDH.1.mean[ref])
 
